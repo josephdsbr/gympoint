@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import {
   Container,
   Header,
@@ -11,15 +12,17 @@ import {
 } from './styles';
 import api from '../../services/api';
 import history from '../../services/history';
-import { toast } from 'react-toastify';
 
 export default function Student() {
   const [students, setStudents] = useState([]);
+  const [studentList, setStudentList] = useState([]);
 
   useEffect(() => {
     async function loadStudents() {
       const response = await api.get('students');
       setStudents(response.data);
+      console.log(response.data);
+      setStudentList(response.data);
     }
 
     loadStudents();
@@ -30,8 +33,20 @@ export default function Student() {
       await api.delete(`students/${id}`);
       toast.success('Estudante deletado com sucesso');
       window.location.reload();
-    } catch(e) {
+    } catch (e) {
       toast.error('Erro ao deletar estudante');
+    }
+  }
+
+  function onHandleFilter(str) {
+    if (str.length > 0) {
+      const newStudents = students.filter(student => {
+        return student.name.includes(str);
+      });
+
+      setStudentList(newStudents);
+    } else {
+      setStudentList(students);
     }
   }
 
@@ -47,7 +62,10 @@ export default function Student() {
           <RegisterButton onClick={() => history.push('/student/register')}>
             Cadastrar
           </RegisterButton>
-          <Input placeholder="Buscar aluno" />
+          <Input
+            placeholder="Buscar aluno"
+            onChange={e => onHandleFilter(e.target.value)}
+          />
         </Search>
       </Header>
       <Content>
@@ -59,7 +77,7 @@ export default function Student() {
               <th>Idade</th>
               <th />
             </tr>
-            {students.map(student => (
+            {studentList.map(student => (
               <tr key={student.id} className="table-row">
                 <td>{student.name}</td>
                 <td>{student.email}</td>

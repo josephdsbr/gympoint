@@ -40,6 +40,24 @@ export const Input = styled.input`
   border-radius: 4px;
   text-align: center;
   color: #999999;
+  padding: 0 8px;
+
+  &:focus {
+    text-align: left;
+    ::-webkit-input-placeholder {
+      /* Edge */
+      color: transparent;
+    }
+
+    :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: transparent;
+    }
+
+    ::placeholder {
+      color: transparent;
+    }
+  }
 `;
 
 export const Content = styled.div`

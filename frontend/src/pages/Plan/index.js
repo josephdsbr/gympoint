@@ -38,7 +38,6 @@ export default function Plan() {
           >
             Cadastrar
           </RegisterButton>
-          <Input placeholder="Buscar aluno" />
         </Search>
       </Header>
       <Content>

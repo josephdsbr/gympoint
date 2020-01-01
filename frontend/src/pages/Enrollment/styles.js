@@ -25,7 +25,6 @@ export const Search = styled.div`
 `;
 
 export const RegisterButton = styled.button`
-  margin-right: 20px;
   background: #ee4d64;
   border: 1px solid #dddddd;
   border-radius: 4px;

@@ -54,7 +54,6 @@ export default function Enrollment() {
           >
             Cadastrar
           </RegisterButton>
-          <Input placeholder="Buscar aluno" />
         </Search>
       </Header>
       <Content>
