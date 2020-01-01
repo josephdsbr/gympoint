@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Installing dependecies
+
+Use `yarn` or `npm install` to install the projects' dependencies.
+
+## Configuration
+
+This application uses a request to access a Rest API. Then, we have to set the host of our backend. For it, you can access the folder **(~/frontend/src/services/api.js)** and set the host of the backend.
+
 ## Available Scripts
 
 In the project directory, you can run:
