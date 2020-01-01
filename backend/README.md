@@ -37,7 +37,7 @@ It generates a file called server.js inside of the dist folder.
 Runs the server in the production mode.<br />
 By default, we are using the port **3335**.
 
-**To this script runs correctly is need have a `dist/server.js` file.**
+**To this script runs correctly is needed to have a `dist/server.js` file.**
 
 ### `yarn queue`
 
