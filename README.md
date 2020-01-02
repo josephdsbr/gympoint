@@ -15,4 +15,4 @@ You can contact me from:
 * [Linkedin](https://www.linkedin.com/in/josephdsbr/)
 * [Instagram](https://www.instagram.com/pajebr/)
 * [WhatsApp](https://api.whatsapp.com/send?phone=5581997667754)
-* [Email](josephdsbr@gmail.com)
+* Email: josephdsbr@gmail.com
