@@ -1,6 +1,11 @@
-# gympoint
-Rocketseat Bootcamp's Final Project.
+# Gympoint
 
-# Instruções
+This project developed to give to the owner of Gyms a way to manage plans, students and enrollments and it gives a communication channel between students and the gym.
 
-As instruções para o pleno funcionamento das aplicações estão no Readme das respectivas pastas.
+# Instructions
+
+All the steps to run the project are explained in the README file inside each submodule.
+
+We recommend to start the configuration process from the backend, then frontend and, lastly, the mobile.
+
+[My Linkedin](https://www.linkedin.com/in/josephdsbr/)
