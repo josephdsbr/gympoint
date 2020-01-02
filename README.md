@@ -8,4 +8,11 @@ All the steps to run the project are explained in the README file inside each su
 
 We recommend to start the configuration process from the backend, then frontend and, lastly, the mobile.
 
-[My Linkedin](https://www.linkedin.com/in/josephdsbr/)
+# Contact
+
+You can contact me from:
+
+* [Linkedin](https://www.linkedin.com/in/josephdsbr/)
+* [Instagram](https://www.instagram.com/pajebr/)
+* [WhatsApp](https://api.whatsapp.com/send?phone=5581997667754)
+* [Email](josephdsbr@gmail.com)
