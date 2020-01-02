@@ -42,3 +42,7 @@ By default, we are using the port **3335**.
 ### `yarn queue`
 
 Runs the queue server in the development mode.
+
+### `yarn lint`
+
+Search in the project errors based on eslint rules.
