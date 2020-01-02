@@ -4,7 +4,6 @@ import {createStackNavigator} from 'react-navigation-stack';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Header from '~/components/Header';
 
 import Answer from './pages/Help/Answer';
 import Detail from './pages/Help/Detail';

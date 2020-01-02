@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import {Alert} from 'react-native';
 import Background from '~/components/Background';
 import {Container, AnswerText, AnswerButton} from './styles';
@@ -38,3 +39,8 @@ export default function Answer({navigation}) {
     </Background>
   );
 }
+
+Answer.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  navigation: PropTypes.object.isRequired,
+};

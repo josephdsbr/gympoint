@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useMemo} from 'react';
-
+import PropTypes from 'prop-types';
 import {parseISO, formatRelative} from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import Background from '~/components/Background';
@@ -62,3 +62,8 @@ export default function Detail({navigation}) {
     </Background>
   );
 }
+
+Detail.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  navigation: PropTypes.object.isRequired,
+};

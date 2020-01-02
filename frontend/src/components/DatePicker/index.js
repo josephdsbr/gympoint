@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { parseISO, format } from 'date-fns';
+import { parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import { useField } from '@rocketseat/unform';
 import { DatePickerInput } from './styles';
@@ -12,6 +12,7 @@ export default function DatePicker({
   initialDate,
 }) {
   const ref = useRef(null);
+  // eslint-disable-next-line no-unused-vars
   const { fieldName, registerField, defaultValue, error } = useField(name);
   const [selected, setSelected] = useState(parseISO(initialDate));
 
@@ -21,7 +22,7 @@ export default function DatePicker({
 
   useEffect(() => {
     setLocalVariableDate(selected);
-  }, []);
+  }, [selected, setLocalVariableDate]);
 
   useEffect(() => {
     registerField({
@@ -32,7 +33,7 @@ export default function DatePicker({
         pickerRef.clear();
       },
     });
-  }, [ref.current, fieldName]);
+  }, [fieldName, registerField]);
 
   function handleChangeDate(date) {
     setSelected(date);

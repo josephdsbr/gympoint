@@ -42,9 +42,7 @@ export const HeaderTitle = styled.p`
   color: #444444;
 `;
 
-export const Body = styled.div`
-
-`;
+export const Body = styled.div``;
 
 export const Item = styled.div`
   padding: 8px 0;

@@ -9,8 +9,8 @@ module.exports = {
       },
       student_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        references: { model: 'students', key: 'id' },
+        allowNull: true,
+        references: {model: 'students', key: 'id'},
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
       },
@@ -25,6 +25,7 @@ module.exports = {
     });
   },
 
+  // eslint-disable-next-line no-unused-vars
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('checkins');
   },

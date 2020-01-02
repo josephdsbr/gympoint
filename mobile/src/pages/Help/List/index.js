@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-
+import PropTypes from 'prop-types';
 import {withNavigationFocus} from 'react-navigation';
 import {useSelector} from 'react-redux';
 import {Container, AnswerList, AccessButton} from './styles';
@@ -44,3 +44,9 @@ function List({navigation, isFocused}) {
 }
 
 export default withNavigationFocus(List);
+
+List.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  navigation: PropTypes.object.isRequired,
+  isFocused: PropTypes.bool.isRequired,
+};

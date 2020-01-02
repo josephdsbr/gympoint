@@ -16,8 +16,8 @@ class AnswerMail {
    * @param {helpOrder} data
    */
 
-  async handle({ data }) {
-    const { helpOrder } = data;
+  async handle({data}) {
+    const {helpOrder} = data;
 
     await Mail.sendMail({
       to: `${helpOrder.student.email} <>`,

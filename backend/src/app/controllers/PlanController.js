@@ -38,17 +38,17 @@ class PlanController {
     /* Request validation with Yup */
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(401).json({ error: 'Validation fails' });
+      return res.status(401).json({error: 'Validation fails'});
     }
 
     /**
      * Plan validation
      */
 
-    const planExists = await Plan.findOne({ where: { title: req.body.title } });
+    const planExists = await Plan.findOne({where: {title: req.body.title}});
 
     if (planExists) {
-      return res.status(400).json({ error: "Plan's title has to be unique" });
+      return res.status(400).json({error: "Plan's title has to be unique"});
     }
 
     /**
@@ -81,32 +81,32 @@ class PlanController {
     /* Request validation */
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(401).json({ error: 'Validation fails' });
+      return res.status(401).json({error: 'Validation fails'});
     }
 
-    const { id } = req.params;
+    const {id} = req.params;
 
     if (!id) {
-      return res.status(401).json({ error: 'Identification not provided ' });
+      return res.status(401).json({error: 'Identification not provided '});
     }
 
     /**
      * Plan validation
      */
 
-    const planExists = await Plan.findOne({ where: { id } });
+    const planExists = await Plan.findOne({where: {id}});
 
     if (!planExists) {
-      return res.status(400).json({ error: 'Plan not found' });
+      return res.status(400).json({error: 'Plan not found'});
     }
 
-    const plan = await Plan.update(req.body, { where: { id } });
+    await Plan.update(req.body, {where: {id}});
 
     /**
      * Returning updated plan
      */
 
-    const updatedPlan = await Plan.findOne({ where: { id } });
+    const updatedPlan = await Plan.findOne({where: {id}});
 
     return res.json(updatedPlan);
   }
@@ -122,20 +122,20 @@ class PlanController {
      * Plan validation
      */
 
-    const { id } = req.params;
+    const {id} = req.params;
 
-    const planExists = await Plan.findOne({ where: { id } });
+    const planExists = await Plan.findOne({where: {id}});
 
     if (!planExists) {
-      return res.status(400).json({ error: 'Plan not found' });
+      return res.status(400).json({error: 'Plan not found'});
     }
 
     /**
      * Destroying and returning
      */
 
-    await Plan.destroy({ where: { id } });
-    return res.json({ message: `Plan ${id} was removed!` });
+    await Plan.destroy({where: {id}});
+    return res.json({message: `Plan ${id} was removed!`});
   }
 }
 

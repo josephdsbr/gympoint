@@ -21,7 +21,6 @@ export default function Student() {
     async function loadStudents() {
       const response = await api.get('students');
       setStudents(response.data);
-      console.log(response.data);
       setStudentList(response.data);
     }
 
@@ -75,6 +74,7 @@ export default function Student() {
               <th>Nome</th>
               <th>E-mail</th>
               <th>Idade</th>
+              {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
               <th />
             </tr>
             {studentList.map(student => (

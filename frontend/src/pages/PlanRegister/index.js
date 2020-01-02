@@ -58,6 +58,7 @@ export default function PlanRegister() {
     return price * duration;
   }, [duration, price]);
 
+  // eslint-disable-next-line no-shadow
   async function onHandleSubmit({ title, duration, price }) {
     try {
       await api.post('plans', {
@@ -88,11 +89,13 @@ export default function PlanRegister() {
       <Content>
         <Form schema={schema} onSubmit={onHandleSubmit} id="register">
           <FormItem>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label>Título do Plano</label>
             <Input name="title" />
           </FormItem>
           <div className="container">
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Duração (em meses)</label>
               <Input
                 name="duration"
@@ -100,10 +103,12 @@ export default function PlanRegister() {
               />
             </FormItem>
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Preço mensal</label>
               <Input name="price" onChange={e => setPrice(e.target.value)} />
             </FormItem>
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Preço Total</label>
               <Input name="total_price" value={totalPrice} disabled />
             </FormItem>

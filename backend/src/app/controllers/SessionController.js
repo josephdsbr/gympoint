@@ -27,41 +27,40 @@ class SessionController {
     /* Request validation */
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(401).json({ error: 'Validation fails' });
+      return res.status(401).json({error: 'Validation fails'});
     }
 
     /**
      * User validation
      */
 
-    const { email, password } = req.body;
+    const {email, password} = req.body;
 
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({where: {email}});
 
     if (!user) {
-      return res.status(400).json({ error: 'User not found' });
+      return res.status(400).json({error: 'User not found'});
     }
 
     if (!(await user.checkPassword(password))) {
-      return res.status(401).json({ error: 'Password does not match' });
+      return res.status(401).json({error: 'Password does not match'});
     }
 
     /**
      * Store a session
      */
 
-    const { id, name } = user;
+    const {id, name} = user;
 
     return res.json({
       user: {
         id,
         name,
       },
-      token: jwt.sign({ id }, authConfig.secret, {
+      token: jwt.sign({id}, authConfig.secret, {
         expiresIn: authConfig.expiresIn,
       }),
-    },
-  );
+    });
   }
 }
 

@@ -40,7 +40,7 @@ class StudentController {
     /** Request validation */
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation Fails' });
+      return res.status(400).json({error: 'Validation Fails'});
     }
 
     /**
@@ -48,18 +48,18 @@ class StudentController {
      */
 
     const studentExists = await Student.findOne({
-      where: { email: req.body.email },
+      where: {email: req.body.email},
     });
 
     if (studentExists) {
-      return res.status(401).json({ error: 'E-mail already used' });
+      return res.status(401).json({error: 'E-mail already used'});
     }
 
     /**
      * Storing and returning student
      */
 
-    const { id, name, email } = await Student.create(req.body);
+    const {id, name, email} = await Student.create(req.body);
 
     return res.json({
       entity: {
@@ -100,25 +100,25 @@ class StudentController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(401).json({ entity: { error: 'Validation fails' } });
+      return res.status(401).json({entity: {error: 'Validation fails'}});
     }
 
     /**
      * Student validation
      */
 
-    const { id } = req.body;
+    const {id} = req.body;
 
-    const studentExists = await Student.findOne({ where: { id } });
+    const studentExists = await Student.findOne({where: {id}});
 
     if (!studentExists) {
-      return res.status(401).json({ entity: { error: 'Student not found' } });
+      return res.status(401).json({entity: {error: 'Student not found'}});
     }
 
     /**
      * Updating and return Student
      */
-    const { name, email, age, weight, height } = req.body;
+    const {name, email, age, weight, height} = req.body;
 
     try {
       await Student.update(
@@ -129,26 +129,26 @@ class StudentController {
           weight,
           height,
         },
-        { where: { id } }
+        {where: {id}}
       );
 
       return res.json({
         entity: {
-          user: { name, email },
+          user: {name, email},
         },
       });
     } catch (err) {
-      console.log(err);
+      return res.status(400).json(err);
     }
   }
 
   async delete(req, res) {
-    const { studentId: id } = req.params;
+    const {studentId: id} = req.params;
 
     const studentExists = await Student.findByPk(id);
 
     if (!studentExists) {
-      return res.status(400).json({ error: "Student doesn't exist" });
+      return res.status(400).json({error: "Student doesn't exist"});
     }
 
     try {
@@ -158,9 +158,9 @@ class StudentController {
         },
       });
 
-      return res.json({ message: 'Student destroyed successfully' });
+      return res.json({message: 'Student destroyed successfully'});
     } catch (e) {
-      return res.status(400).send({ error: e });
+      return res.status(400).send({error: e});
     }
   }
 }

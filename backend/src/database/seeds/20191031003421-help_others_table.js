@@ -10,7 +10,7 @@ module.exports = {
       student_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        reference: { model: 'students', key: 'id' },
+        reference: {model: 'students', key: 'id'},
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
       },
@@ -37,6 +37,7 @@ module.exports = {
     });
   },
 
+  // eslint-disable-next-line no-unused-vars
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('help_others');
   },

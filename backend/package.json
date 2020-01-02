@@ -8,7 +8,8 @@
     "queue": "nodemon src/queue.js",
     "dev:debug": "nodemon --inspect src/server.js",
     "build": "sucrase ./src -d ./dist --transforms imports",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "lint": "eslint ."
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

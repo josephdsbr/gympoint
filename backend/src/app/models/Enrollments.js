@@ -1,5 +1,5 @@
-import Sequelize, { Model } from 'sequelize';
-import { isBefore, isAfter } from 'date-fns';
+import Sequelize, {Model} from 'sequelize';
+import {isBefore, isAfter} from 'date-fns';
 import Plan from './Plans';
 
 class Enrollment extends Model {
@@ -24,12 +24,12 @@ class Enrollment extends Model {
         end_date: Sequelize.DATE,
         price: Sequelize.DOUBLE,
       },
-      { sequelize }
+      {sequelize}
     );
 
     this.addHook('beforeSave', async enrollment => {
-      const { duration, price } = await Plan.findOne({
-        where: { id: enrollment.plan_id },
+      const {duration, price} = await Plan.findOne({
+        where: {id: enrollment.plan_id},
       });
 
       /**
@@ -51,8 +51,8 @@ class Enrollment extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Student, { foreignKey: 'student_id', as: 'student' });
-    this.belongsTo(models.Plan, { foreignKey: 'plan_id', as: 'plan' });
+    this.belongsTo(models.Student, {foreignKey: 'student_id', as: 'student'});
+    this.belongsTo(models.Plan, {foreignKey: 'plan_id', as: 'plan'});
   }
 }
 

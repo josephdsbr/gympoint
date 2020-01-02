@@ -7,7 +7,6 @@ import {
   Container,
   Content,
   Header,
-  Input,
   RegisterButton,
   Search,
   Table,
@@ -64,6 +63,7 @@ export default function Enrollment() {
             <th>Início</th>
             <th>Término</th>
             <th>Ativa</th>
+            {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
             <th />
           </tr>
           {enrollments.map(enrollment => (

@@ -1,4 +1,5 @@
 import React, {useMemo} from 'react';
+import PropTypes from 'prop-types';
 import {parseISO, formatRelative} from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import {CheckinContent, CheckinTitle, CheckinHour} from './styles';
@@ -18,3 +19,8 @@ export default function CheckinItem({data}) {
     </CheckinContent>
   );
 }
+
+CheckinItem.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  data: PropTypes.object.isRequired,
+};

@@ -1,16 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Container} from './styles';
-import { TouchableOpacity} from "react-native";
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Header from '~/components/Header';
 
 export default function Background({children}) {
   return (
     <Container>
-      
       <Header />
       {children}
     </Container>
   );
 }
+
+Background.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
+};

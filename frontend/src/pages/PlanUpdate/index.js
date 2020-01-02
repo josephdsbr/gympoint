@@ -61,6 +61,7 @@ export default function PlanUpdate({ location }) {
     return duration * price;
   }, [duration, price]);
 
+  // eslint-disable-next-line no-shadow
   async function onHandleSubmit({ title, duration, price }) {
     try {
       await api.put(`plans/${planId}`, {
@@ -88,7 +89,7 @@ export default function PlanUpdate({ location }) {
     }
 
     loadPlan();
-  }, []);
+  }, [location.state]);
 
   return (
     <Container>
@@ -106,6 +107,7 @@ export default function PlanUpdate({ location }) {
       <Content>
         <Form schema={schema} onSubmit={onHandleSubmit} id="register">
           <FormItem>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label>Título do Plano</label>
             <Input
               name="title"
@@ -115,6 +117,7 @@ export default function PlanUpdate({ location }) {
           </FormItem>
           <div className="container">
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Duração (em meses)</label>
               <Input
                 name="duration"
@@ -123,6 +126,7 @@ export default function PlanUpdate({ location }) {
               />
             </FormItem>
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Preço mensal</label>
               <Input
                 name="price"
@@ -131,6 +135,7 @@ export default function PlanUpdate({ location }) {
               />
             </FormItem>
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Preço Total</label>
               <Input name="total_price" value={totalPrice} disabled />
             </FormItem>

@@ -10,7 +10,7 @@ class EnrollmentInfoController {
    */
 
   async index(req, res) {
-    const { enrollmentId: id } = req.params;
+    const {enrollmentId: id} = req.params;
     const enrollment = await Enrollment.findByPk(id, {
       attributes: ['id', 'start_date', 'end_date', 'price', 'active'],
       include: [
@@ -28,7 +28,7 @@ class EnrollmentInfoController {
     });
 
     if (!enrollment) {
-      return res.status(400).json({ error: "Enrollment doesn't exist" });
+      return res.status(400).json({error: "Enrollment doesn't exist"});
     }
 
     return res.json(enrollment);

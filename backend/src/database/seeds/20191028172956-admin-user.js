@@ -1,8 +1,7 @@
-
-
 const bcrypt = require('bcryptjs');
 
 module.exports = {
+  // eslint-disable-next-line no-unused-vars
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('users', [
       {
@@ -16,6 +15,7 @@ module.exports = {
     ]);
   },
 
+  // eslint-disable-next-line no-unused-vars
   down: (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete('users', {
       email: 'admin@gympoint.com',

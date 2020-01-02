@@ -8,7 +8,7 @@ class PlanInfoController {
    */
 
   async index(req, res) {
-    const { id } = req.params;
+    const {id} = req.params;
     const plan = await Plan.findByPk(id);
     return res.json(plan);
   }

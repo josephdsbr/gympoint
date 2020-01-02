@@ -14,16 +14,16 @@ class HelpOrderController {
     /**
      * Student validation
      */
-    const { studentId } = req.params;
+    const {studentId} = req.params;
 
     if (!studentId) {
-      return res.status(400).json({ error: 'Validation Fails' });
+      return res.status(400).json({error: 'Validation Fails'});
     }
 
     const studentExists = await Student.findByPk(studentId);
 
     if (!studentExists) {
-      return res.status(400).json({ error: 'Validation Fails' });
+      return res.status(400).json({error: 'Validation Fails'});
     }
 
     /**
@@ -56,23 +56,23 @@ class HelpOrderController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation fails' });
+      return res.status(400).json({error: 'Validation fails'});
     }
 
     /**
      * Student validation
      */
 
-    const { studentId } = req.params;
+    const {studentId} = req.params;
 
     if (!studentId) {
-      return res.status(400).json({ error: 'Validation fails ' });
+      return res.status(400).json({error: 'Validation fails '});
     }
 
     const studentExists = await Student.findByPk(studentId);
 
     if (!studentExists) {
-      return res.status(400).json({ error: 'User does not exist' });
+      return res.status(400).json({error: 'User does not exist'});
     }
 
     /**
@@ -83,7 +83,7 @@ class HelpOrderController {
 
     const helpOther = await HelpOther.create(req.body);
 
-    return res.json({ helpOther });
+    return res.json({helpOther});
   }
 }
 
