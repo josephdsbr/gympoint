@@ -69,10 +69,10 @@ export default function PlanUpdate({ location }) {
         duration,
         price,
       });
-      toast.success('Registro realizado com sucesso');
+      toast.success('Registro atualizado com sucesso');
       history.push('/plan');
     } catch (e) {
-      toast.error('Falha no registro');
+      toast.error('Falha na atualização');
     }
   }
 
@@ -94,13 +94,13 @@ export default function PlanUpdate({ location }) {
   return (
     <Container>
       <Header>
-        <Title>Cadastro de Planos</Title>
+        <Title>Edição de Planos</Title>
         <Search>
           <BackButton type="button" onClick={() => history.goBack()}>
             Voltar
           </BackButton>
           <RegisterButton type="submit" form="register">
-            Cadastrar
+            Atualizar
           </RegisterButton>
         </Search>
       </Header>

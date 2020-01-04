@@ -95,21 +95,21 @@ export default function EnrollmentUpdate({ location }) {
         plan_id: plan,
         start_date: format(start_date, 'yyyy-MM-dd'),
       });
-      toast.success('Registro efetuado com sucesso');
+      toast.success('Registro atualizado com sucesso');
       history.push('/enrollment');
     } catch (e) {
-      toast.error('Não foi possível realizar o registro');
+      toast.error('Não foi possível atualizar o registro');
     }
   }
 
   return (
     <Container>
       <Header>
-        <Title>Cadastro de matrícula</Title>
+        <Title>Edição de matrícula</Title>
         <Search>
           <BackButton onClick={() => history.goBack()}>Voltar</BackButton>
           <RegisterButton form="register" type="submit">
-            Cadastrar
+            Atualizar
           </RegisterButton>
         </Search>
       </Header>

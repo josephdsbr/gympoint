@@ -99,7 +99,7 @@ export default function StudentUpdate({ location }) {
             Voltar
           </BackButton>
           <RegisterButton type="submit" form="register">
-            Cadastrar
+            Atualizar
           </RegisterButton>
         </Search>
       </Header>

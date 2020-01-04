@@ -45,7 +45,7 @@ export default function Enrollment() {
   return (
     <Container>
       <Header>
-        <Title>Gerenciando Alunos</Title>
+        <Title>Gerenciando Matrículas</Title>
         <Search>
           <RegisterButton
             type="button"
