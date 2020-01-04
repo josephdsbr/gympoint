@@ -13,7 +13,7 @@ export default function DatePicker({
 }) {
   const ref = useRef(null);
   // eslint-disable-next-line no-unused-vars
-  const { fieldName, registerField, defaultValue, error } = useField(name);
+  const { fieldName, registerField, error } = useField(name);
   const [selected, setSelected] = useState(parseISO(initialDate));
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function DatePicker({
 
   useEffect(() => {
     setLocalVariableDate(selected);
-  }, [selected, setLocalVariableDate]);
+  }, [selected]);
 
   useEffect(() => {
     registerField({
@@ -33,7 +33,7 @@ export default function DatePicker({
         pickerRef.clear();
       },
     });
-  }, [fieldName, registerField]);
+  }, [ref.current, fieldName]);
 
   function handleChangeDate(date) {
     setSelected(date);
