@@ -9,14 +9,14 @@ module.exports = {
       },
       student_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'students', key: 'id' },
+        references: {model: 'students', key: 'id'},
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
         allowNull: true,
       },
       plan_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'plans', key: 'id' },
+        references: {model: 'plans', key: 'id'},
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
         allowNull: true,
@@ -44,6 +44,7 @@ module.exports = {
     });
   },
 
+  // eslint-disable-next-line no-unused-vars
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('enrollments');
   },

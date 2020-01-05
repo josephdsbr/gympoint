@@ -1,4 +1,4 @@
-import Sequelize, { Model } from 'sequelize';
+import Sequelize, {Model} from 'sequelize';
 
 class Checkin extends Model {
   static init(sequelize) {
@@ -6,14 +6,14 @@ class Checkin extends Model {
       {
         student_id: Sequelize.INTEGER,
       },
-      { sequelize }
+      {sequelize}
     );
 
     return this;
   }
 
   static associate(models) {
-    this.belongsTo(models.Student, { foreignKey: 'student_id', as: 'student' });
+    this.belongsTo(models.Student, {foreignKey: 'student_id', as: 'student'});
   }
 }
 

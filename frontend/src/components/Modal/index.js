@@ -15,7 +15,6 @@ import {
   Close,
 } from './styles';
 import api from '../../services/api';
-import history from '../../services/history';
 
 const schema = Yup.object().shape({
   answer: Yup.string()
@@ -64,5 +63,6 @@ export default function Modal({ display, onClose, question }) {
 Modal.propTypes = {
   display: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
   question: PropTypes.object.isRequired,
 };

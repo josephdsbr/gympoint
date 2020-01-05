@@ -8,6 +8,7 @@ function Input({style, icon, ...rest}, ref) {
   return (
     <Container style={style}>
       {icon && <Icon name={icon} size={20} color="#999999" />}
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <TInput {...rest} ref={ref} />
     </Container>
   );

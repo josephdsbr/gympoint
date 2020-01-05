@@ -6,6 +6,7 @@ import {Container, Text} from './styles';
 
 export default function Button({children, loading, ...rest}) {
   return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <Container {...rest}>
       {loading ? (
         <ActivityIndicator size="small" color="#fff" />

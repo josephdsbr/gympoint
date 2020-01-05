@@ -63,7 +63,7 @@ class EnrollmentController {
     /* Request validation with Yup */
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation fails' });
+      return res.status(400).json({error: 'Validation fails'});
     }
 
     /**
@@ -71,13 +71,11 @@ class EnrollmentController {
      */
 
     const enrollmentExists = await Enrollment.findOne({
-      where: { student_id: req.body.student_id },
+      where: {student_id: req.body.student_id},
     });
 
     if (enrollmentExists) {
-      return res
-        .status(401)
-        .json({ error: 'Student already has an enrollment' });
+      return res.status(401).json({error: 'Student already has an enrollment'});
     }
 
     /**
@@ -87,7 +85,7 @@ class EnrollmentController {
     const userExists = await Student.findByPk(req.body.student_id);
 
     if (!userExists) {
-      return res.status(400).json({ error: 'Student does not exist' });
+      return res.status(400).json({error: 'Student does not exist'});
     }
 
     /**
@@ -97,14 +95,14 @@ class EnrollmentController {
     const planExists = await Plan.findByPk(req.body.plan_id);
 
     if (!planExists) {
-      return res.status(400).json({ error: 'Plan does not exist' });
+      return res.status(400).json({error: 'Plan does not exist'});
     }
 
     /**
      * Storing enrollment
      */
 
-    const { id } = await Enrollment.create(req.body);
+    const {id} = await Enrollment.create(req.body);
 
     /**
      * Transforming data to response
@@ -129,7 +127,7 @@ class EnrollmentController {
      * Adding info to a email job
      */
 
-    await Queue.add(InfoMail.key, { enrollment });
+    await Queue.add(InfoMail.key, {enrollment});
 
     return res.json(enrollment);
   }
@@ -145,7 +143,7 @@ class EnrollmentController {
      * Request validator
      */
 
-    const { id } = req.params;
+    const {id} = req.params;
 
     const schema = Yup.object().shape({
       student_id: Yup.number()
@@ -158,7 +156,7 @@ class EnrollmentController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation fails' });
+      return res.status(400).json({error: 'Validation fails'});
     }
 
     /**
@@ -168,7 +166,7 @@ class EnrollmentController {
     const enrollment = await Enrollment.findByPk(id);
 
     if (!enrollment) {
-      return res.status(400).json({ error: 'Enrollment does not exist' });
+      return res.status(400).json({error: 'Enrollment does not exist'});
     }
 
     /**
@@ -191,21 +189,21 @@ class EnrollmentController {
      * Enrollment validation
      */
 
-    const { id } = req.params;
+    const {id} = req.params;
 
     const enrollmentExists = await Enrollment.findByPk(id);
 
     if (!enrollmentExists) {
-      return res.status(400).json({ error: 'Register does not exist' });
+      return res.status(400).json({error: 'Register does not exist'});
     }
 
     /**
      * Destroying and returning
      */
 
-    await Enrollment.destroy({ where: { id } });
+    await Enrollment.destroy({where: {id}});
 
-    return res.json({ message: 'Register was removed' });
+    return res.json({message: 'Register was removed'});
   }
 }
 

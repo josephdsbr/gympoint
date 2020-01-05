@@ -3,7 +3,7 @@ import {Alert} from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useSelector} from 'react-redux';
-
+import PropTypes from 'prop-types';
 import Background from '~/components/Background';
 import {Container, CheckingButton, CheckinContainer} from './styles';
 
@@ -11,7 +11,8 @@ import CheckinItem from '~/components/CheckinItem';
 
 import api from '~/services/api';
 
-export default function Checkin({ navigation }) {
+// eslint-disable-next-line no-unused-vars
+export default function Checkin({navigation}) {
   const {id} = useSelector(state => state.user.profile);
   const [checking, setChecking] = useState([]);
 
@@ -20,8 +21,8 @@ export default function Checkin({ navigation }) {
       const response = await api.get(`/students/${id}/checkins`);
       setChecking(response.data);
     }
-    
-    loadChecking()
+
+    loadChecking();
   }, []);
 
   async function handleCheckIn() {
@@ -49,7 +50,13 @@ export default function Checkin({ navigation }) {
 }
 Checkin.navigationOptions = {
   tabBarLabel: 'Check-in',
+  // eslint-disable-next-line react/prop-types
   tabBarIcon: ({tintColor}) => (
     <Icon name="event" size={20} color={tintColor} />
   ),
+};
+
+Checkin.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  navigation: PropTypes.object.isRequired,
 };

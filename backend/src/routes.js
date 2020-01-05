@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import {Router} from 'express';
 import cors from 'cors';
 
 /* Controllers imports */
@@ -66,11 +66,7 @@ routes.get('/help-others/:id/info', HelpOtherNotAnswerInfoController.index);
  * Checkings
  */
 
-routes.get(
-  '/students/:studentId/checkins',
-  AuthAdminMiddleware,
-  CheckinController.index
-);
+routes.get('/students/:studentId/checkins', CheckinController.index);
 routes.post('/students/:studentId/checkins', CheckinController.store);
 
 routes.post('/plans', AuthAdminMiddleware, PlanController.store);

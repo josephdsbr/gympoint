@@ -54,6 +54,4 @@ export const MenuItem = styled(Link)`
   white-space: nowrap;
   margin: 0 10px;
   color: #999999;
-
-
 `;

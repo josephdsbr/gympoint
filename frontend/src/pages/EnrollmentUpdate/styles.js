@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { Form as RocketForm, Input as RocketInput, Select as RocketSelect } from '@rocketseat/unform';
+import {
+  Form as RocketForm,
+  Input as RocketInput,
+  Select as RocketSelect,
+} from '@rocketseat/unform';
 
 export const Container = styled.div`
   width: 60%;

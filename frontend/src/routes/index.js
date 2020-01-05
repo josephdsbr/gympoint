@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
 
+// eslint-disable-next-line import/no-named-as-default
 import Route from './Route';
 
 import SignIn from '../pages/SignIn';
@@ -38,7 +39,12 @@ export default function Routes() {
       />
       <Route path="/student/update" exact component={StudentUpdate} isPrivate />
       <Route path="/plan/update" exact component={PlanUpdate} isPrivate />
-      <Route path="/enrollment/update" exact component={EnrollmentUpdate} isPrivate />
+      <Route
+        path="/enrollment/update"
+        exact
+        component={EnrollmentUpdate}
+        isPrivate
+      />
     </Switch>
   );
 }

@@ -29,10 +29,10 @@ class HelpOtherAnswer {
     /** Request validation */
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation Fails' });
+      return res.status(400).json({error: 'Validation Fails'});
     }
 
-    const { id } = req.params;
+    const {id} = req.params;
 
     /**
      * HelpOrder validation
@@ -49,7 +49,7 @@ class HelpOtherAnswer {
     });
 
     if (!helpOther) {
-      return res.status(401).json({ error: 'Request does not exist' });
+      return res.status(401).json({error: 'Request does not exist'});
     }
 
     /**
@@ -60,7 +60,7 @@ class HelpOtherAnswer {
 
     await helpOther.update(req.body);
 
-    Queue.add(AnswerMail.key, { helpOther });
+    Queue.add(AnswerMail.key, {helpOther});
 
     return res.json(helpOther);
   }

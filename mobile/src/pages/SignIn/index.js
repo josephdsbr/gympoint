@@ -32,7 +32,9 @@ export default function SignIn() {
             returnKeyType="send"
             onSubmitEditing={handleSubmit}
           />
-          <SubmitButton loading={loading} onPress={handleSubmit}>Acessar</SubmitButton>
+          <SubmitButton loading={loading} onPress={handleSubmit}>
+            Acessar
+          </SubmitButton>
         </Form>
       </Container>
     </Background>

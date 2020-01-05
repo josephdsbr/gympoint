@@ -1,4 +1,4 @@
-import { format, parseISO } from 'date-fns';
+import {format, parseISO} from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import Mail from '../../lib/Mail';
 
@@ -12,8 +12,8 @@ class InfoMail {
     return 'InfoMail';
   }
 
-  async handle({ data }) {
-    const { enrollment } = data;
+  async handle({data}) {
+    const {enrollment} = data;
 
     await Mail.sendMail({
       to: `${enrollment.student.email} <>`,
@@ -25,12 +25,12 @@ class InfoMail {
         plano_inicio: format(
           parseISO(enrollment.start_date),
           "'dia' dd 'de' MMMM 'de' yyyy",
-          { locale: pt }
+          {locale: pt}
         ),
         plano_termino: format(
           parseISO(enrollment.end_date),
           "'dia' dd 'de' MMMM 'de' yyyy",
-          { locale: pt }
+          {locale: pt}
         ),
         plano_valor: enrollment.price,
       },

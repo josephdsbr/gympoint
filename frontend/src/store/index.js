@@ -10,7 +10,8 @@ import rootSaga from './modules/rootSaga';
 
 const sagaMonitor =
   process.env.NODE_ENV === 'development'
-    ? console.tron.createSagaMonitor()
+    ? // eslint-disable-next-line no-console
+      console.tron.createSagaMonitor()
     : null;
 
 const sagaMiddleware = createSagaMiddleware({ sagaMonitor });

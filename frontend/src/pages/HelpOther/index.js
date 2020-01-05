@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Content, Header, ContentBody, ContentHeader, HeaderTitle, Body, Item, Name, Title } from './styles';
+import {
+  Container,
+  Content,
+  Header,
+  ContentBody,
+  ContentHeader,
+  HeaderTitle,
+  Body,
+  Item,
+  Name,
+  Title,
+} from './styles';
 import api from '../../services/api';
 import Modal from '../../components/Modal';
-import { toast } from 'react-toastify';
 
 export default function HelpOther() {
   const [questions, setQuestions] = useState([]);
@@ -50,7 +60,7 @@ export default function HelpOther() {
             </ContentHeader>
             <Body>
               {questions.map(question => (
-                <Item key={question.id} >
+                <Item key={question.id}>
                   <Name>{question.student.name}</Name>
                   <button
                     type="button"

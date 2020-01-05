@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import {
   Container,
   Content,
   Header,
-  Input,
   RegisterButton,
   Search,
   Table,
@@ -27,6 +27,16 @@ export default function Plan() {
   function onHandleEdit(id) {
     history.push('/plan/update', { id });
   }
+
+  async function onHandleDelete(id) {
+    try {
+      await api.delete(`plans/${id}`);
+      toast.success('Plano deletado com sucesso');
+      window.location.reload();
+    } catch (e) {
+      toast.error('Erro ao deletar plano');
+    }
+  }
   return (
     <Container>
       <Header>
@@ -46,6 +56,7 @@ export default function Plan() {
             <th>Plano</th>
             <th>Duração</th>
             <th>Valor (mensal)</th>
+            {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
             <th />
           </tr>
           {plans.map(plan => (
@@ -71,7 +82,7 @@ export default function Plan() {
                 <button
                   type="button"
                   className="delete"
-                  onClick={() => console.log('ola')}
+                  onClick={() => onHandleDelete(plan.id)}
                 >
                   apagar
                 </button>

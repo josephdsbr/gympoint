@@ -55,7 +55,7 @@ export default function EnrollmentRegister() {
     return selectedPlanId !== undefined && startDate !== undefined
       ? format(addMonths(startDate, duration), 'dd/MM/yyyy  ')
       : null;
-  }, [selectedPlanId, startDate]);
+  }, [plans, selectedPlanId, startDate]);
 
   const finalValue = useMemo(() => {
     const selectedPlan = plans.filter(plan => {
@@ -68,7 +68,7 @@ export default function EnrollmentRegister() {
     }
 
     return finalPrice;
-  }, [selectedPlanId]);
+  }, [plans, selectedPlanId]);
 
   // eslint-disable-next-line camelcase
   async function onHandleSubmit({ student, plan, start_date }) {
@@ -99,6 +99,7 @@ export default function EnrollmentRegister() {
       <Content>
         <Form id="register" onSubmit={onHandleSubmit}>
           <FormItem>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label>Aluno</label>
             <Select
               name="student"
@@ -111,6 +112,7 @@ export default function EnrollmentRegister() {
           </FormItem>
           <div className="container">
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Plano</label>
               <Select
                 name="plan"
@@ -123,6 +125,7 @@ export default function EnrollmentRegister() {
               />
             </FormItem>
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Data de Início</label>
               <DatePicker
                 name="start_date"
@@ -131,10 +134,12 @@ export default function EnrollmentRegister() {
               />
             </FormItem>
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Data de Término</label>
               <Input name="end_date" value={finalDate} disabled />
             </FormItem>
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Preço Total</label>
               <Input name="total_price" value={finalValue} disabled />
             </FormItem>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 import {
   Container,
   Header,
@@ -87,7 +88,7 @@ export default function StudentUpdate({ location }) {
       setStudent(response.data);
     }
     loadStudent();
-  }, []);
+  }, [location.state]);
 
   return (
     <Container>
@@ -98,30 +99,40 @@ export default function StudentUpdate({ location }) {
             Voltar
           </BackButton>
           <RegisterButton type="submit" form="register">
-            Cadastrar
+            Atualizar
           </RegisterButton>
         </Search>
       </Header>
       <Content>
-        <Form initialData={student} schema={schema} onSubmit={onHandleSubmit} id="register">
+        <Form
+          initialData={student}
+          schema={schema}
+          onSubmit={onHandleSubmit}
+          id="register"
+        >
           <FormItem>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label>Nome Completo</label>
             <Input name="name" placeholder="José Vinícius" />
           </FormItem>
           <FormItem>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label>Endereço de e-mail</label>
             <Input name="email" placeholder="josephdsbr@gmail.com" />
           </FormItem>
           <div className="container">
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Idade</label>
               <Input name="age" />
             </FormItem>
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>PESO (em kg)</label>
               <Input name="weight" />
             </FormItem>
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Altura</label>
               <Input name="height" />
             </FormItem>
@@ -131,3 +142,8 @@ export default function StudentUpdate({ location }) {
     </Container>
   );
 }
+
+StudentUpdate.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  location: PropTypes.object.isRequired,
+};

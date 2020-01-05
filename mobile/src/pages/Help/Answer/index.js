@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 import {Alert} from 'react-native';
 import Background from '~/components/Background';
 import {Container, AnswerText, AnswerButton} from './styles';
+import {store} from '~/store';
 import api from '~/services/api';
 
 export default function Answer({navigation}) {
   const [question, setQuestion] = useState('');
-  const id = 1;
+  const {id} = store.getState().user.profile;
   async function handleSendMessage() {
     try {
       await api.post(`/students/${id}/help-others`, {
@@ -38,3 +40,8 @@ export default function Answer({navigation}) {
     </Background>
   );
 }
+
+Answer.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  navigation: PropTypes.object.isRequired,
+};

@@ -26,11 +26,15 @@ export default function SignIn() {
       <Content>
         <img src={Logo} alt="logo" />
         <Form schema={schema} onSubmit={handleSubmit}>
+          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label>SEU E-MAIL</label>
           <Input name="email" type="email" placeholder="exemplo@email.com" />
+          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label>SUA SENHA</label>
           <Input name="password" type="password" placeholder="*************" />
-          <button type="submit">{loading ? 'Carregando ...' : 'Entrar no Sistema'}</button>
+          <button type="submit">
+            {loading ? 'Carregando ...' : 'Entrar no Sistema'}
+          </button>
         </Form>
       </Content>
     </Container>

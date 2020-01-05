@@ -15,7 +15,9 @@ export default function Header() {
       <Menu>
         <img src={Logo} alt="logo" />
         <MenuContainer>
-          <MenuItem className="selected" to="/student">ALUNOS</MenuItem>
+          <MenuItem className="selected" to="/student">
+            ALUNOS
+          </MenuItem>
           <MenuItem to="/plan">PLANOS</MenuItem>
           <MenuItem to="/enrollment">MATRÍCULAS</MenuItem>
           <MenuItem to="/help-other">PEDIDOS DE AUXÍLIO</MenuItem>
@@ -23,6 +25,7 @@ export default function Header() {
       </Menu>
       <UserInfo>
         <p>{name}</p>
+        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events */}
         <span onClick={handleSignOut}>sair do sistema</span>
       </UserInfo>
     </Container>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import {
@@ -92,23 +92,28 @@ export default function StudentRegister() {
       <Content>
         <Form schema={schema} onSubmit={onHandleSubmit} id="register">
           <FormItem>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label>Nome Completo</label>
             <Input name="name" placeholder="José Vinícius" />
           </FormItem>
           <FormItem>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label>Endereço de e-mail</label>
             <Input name="email" placeholder="josephdsbr@gmail.com" />
           </FormItem>
           <div className="container">
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Idade</label>
               <Input name="age" />
             </FormItem>
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>PESO (em kg)</label>
               <Input name="weight" />
             </FormItem>
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Altura</label>
               <Input name="height" />
             </FormItem>

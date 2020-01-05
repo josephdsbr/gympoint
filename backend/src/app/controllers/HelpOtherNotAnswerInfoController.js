@@ -8,7 +8,7 @@ class HelpOtherNotAnswerInfo {
    */
 
   async index(req, res) {
-    const { id } = req.params;
+    const {id} = req.params;
     const helpOther = await HelpOther.findByPk(id);
     return res.json(helpOther);
   }

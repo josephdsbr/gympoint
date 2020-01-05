@@ -1,8 +1,7 @@
 /** Libraries Imports */
 import * as Yup from 'yup';
-import { parse, stringify } from 'qs';
 /** Models Imports */
-import { Op } from 'sequelize';
+import {Op} from 'sequelize';
 import User from '../models/Users';
 
 class UserController {
@@ -12,11 +11,11 @@ class UserController {
    * @param {*} res
    */
   async index(req, res) {
-    const { name } = req.params;
+    const {name} = req.params;
     const user =
       name !== undefined
         ? await User.findOne({
-            where: { name: { [Op.like]: decodeURIComponent(name) } },
+            where: {name: {[Op.like]: decodeURIComponent(name)}},
           })
         : await User.findAll();
 
@@ -45,24 +44,24 @@ class UserController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation Fails' });
+      return res.status(400).json({error: 'Validation Fails'});
     }
 
     /**
      * User validation
      */
 
-    const userExists = await User.findOne({ where: { email: req.body.email } });
+    const userExists = await User.findOne({where: {email: req.body.email}});
 
     if (userExists) {
-      return res.status(401).json({ error: 'E-mail already used.' });
+      return res.status(401).json({error: 'E-mail already used.'});
     }
 
     /**
      * Creating and returning User
      */
 
-    const { id, name, email, password_hash, provider } = await User.create(
+    const {id, name, email, password_hash, provider} = await User.create(
       req.body
     );
 
@@ -100,38 +99,38 @@ class UserController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation fails' });
+      return res.status(400).json({error: 'Validation fails'});
     }
 
     /**
      * User validation
      */
 
-    const { email, oldPassword } = req.body;
+    const {email, oldPassword} = req.body;
 
     const user = await User.findByPk(req.userId);
 
     /** E-mail validation */
 
     if (email !== user.email) {
-      const userExists = await User.findOne({ where: { email } });
+      const userExists = await User.findOne({where: {email}});
 
       if (userExists) {
-        return res.status(400).json({ error: 'User already exists' });
+        return res.status(400).json({error: 'User already exists'});
       }
     }
 
     /** Check password */
 
     if (oldPassword && !(await user.checkPassword(oldPassword))) {
-      return res.status(401).json({ error: 'Password does not match' });
+      return res.status(401).json({error: 'Password does not match'});
     }
 
     /**
      * Updating and Returning User
      */
 
-    const { id, name, provider } = await user.update(req.body);
+    const {id, name, provider} = await user.update(req.body);
 
     return res.json({
       id,

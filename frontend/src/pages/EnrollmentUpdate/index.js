@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { addMonths, format, parseISO } from 'date-fns';
+import { addMonths, format } from 'date-fns';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import {
@@ -47,6 +47,7 @@ export default function EnrollmentUpdate({ location }) {
     async function loadStudentInfo() {
       const { id } = location.state;
       const response = await api.get(`enrollments/${id}`);
+      // eslint-disable-next-line camelcase
       const { start_date, student, plan } = response.data;
       setInitialDate(start_date);
       setSelectedStudentId(student.id);
@@ -55,7 +56,7 @@ export default function EnrollmentUpdate({ location }) {
     }
 
     loadStudentInfo();
-  }, []);
+  }, [location.state]);
 
   useEffect(() => {
     async function loadPlans() {
@@ -94,27 +95,28 @@ export default function EnrollmentUpdate({ location }) {
         plan_id: plan,
         start_date: format(start_date, 'yyyy-MM-dd'),
       });
-      toast.success('Registro efetuado com sucesso');
+      toast.success('Registro atualizado com sucesso');
       history.push('/enrollment');
     } catch (e) {
-      toast.error('Não foi possível realizar o registro');
+      toast.error('Não foi possível atualizar o registro');
     }
   }
 
   return (
     <Container>
       <Header>
-        <Title>Cadastro de matrícula</Title>
+        <Title>Edição de matrícula</Title>
         <Search>
           <BackButton onClick={() => history.goBack()}>Voltar</BackButton>
           <RegisterButton form="register" type="submit">
-            Cadastrar
+            Atualizar
           </RegisterButton>
         </Search>
       </Header>
       <Content>
         <Form id="register" onSubmit={onHandleSubmit}>
           <FormItem>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label>Aluno</label>
             <Select
               name="student"
@@ -129,6 +131,7 @@ export default function EnrollmentUpdate({ location }) {
           </FormItem>
           <div className="container">
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Plano</label>
               <Select
                 name="plan"
@@ -142,6 +145,7 @@ export default function EnrollmentUpdate({ location }) {
               />
             </FormItem>
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Data de Início</label>
               <DatePicker
                 name="start_date"
@@ -150,10 +154,12 @@ export default function EnrollmentUpdate({ location }) {
               />
             </FormItem>
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Data de Término</label>
               <Input name="end_date" value={finalDate} disabled />
             </FormItem>
             <FormItem>
+              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label>Preço Total</label>
               <Input name="total_price" value={finalValue} disabled />
             </FormItem>
@@ -165,5 +171,6 @@ export default function EnrollmentUpdate({ location }) {
 }
 
 EnrollmentUpdate.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   location: PropTypes.object.isRequired,
 };

@@ -1,8 +1,6 @@
-import * as Yup from 'yup';
-import { Op } from 'sequelize';
-import { startOfDay, endOfDay } from 'date-fns';
+import {startOfDay, endOfDay} from 'date-fns';
+import {Op} from 'sequelize';
 import Checkin from '../models/Checkins';
-import User from '../models/Users';
 import Student from '../models/Students';
 
 class CheckinController {
@@ -17,17 +15,17 @@ class CheckinController {
      * Input validation
      */
 
-    const { studentId } = req.params;
+    const {studentId} = req.params;
 
     if (!studentId) {
-      return res.status(400).json({ error: 'Validation fails' });
+      return res.status(400).json({error: 'Validation fails'});
     }
 
     /**
      * Treatments and Returns
      */
 
-    const checkin = await Checkin.findAll({ where: { student_id: studentId } });
+    const checkin = await Checkin.findAll({where: {student_id: studentId}});
 
     return res.json(checkin);
   }
@@ -46,7 +44,7 @@ class CheckinController {
     const studentExists = await Student.findByPk(req.params.studentId);
 
     if (!studentExists) {
-      return res.status(401).json({ error: 'Student does not exist' });
+      return res.status(401).json({error: 'Student does not exist'});
     }
 
     /**
@@ -69,14 +67,14 @@ class CheckinController {
     });
 
     if (countChecking.count >= 5) {
-      return res.status(401).json({ error: 'Limit exceeded' });
+      return res.status(401).json({error: 'Limit exceeded'});
     }
 
     /**
      * Creating a checkin
      */
 
-    const checkin = await Checkin.create({ student_id: req.params.studentId });
+    const checkin = await Checkin.create({student_id: req.params.studentId});
 
     return res.json(checkin);
   }
